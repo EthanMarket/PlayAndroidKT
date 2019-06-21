@@ -1,8 +1,8 @@
 package com.ethan.core.api.base
 
-import android.app.Activity
 import android.os.Bundle
 import android.support.annotation.LayoutRes
+import android.support.v7.app.AppCompatActivity
 import android.widget.Toast
 import com.ethan.core.api.ui.LoadingDialog
 import com.ethan.core.api.R
@@ -11,7 +11,7 @@ import com.yanzhenjie.sofia.Sofia
 /**
  * 抽象基类AbsBaseActivity
  */
-open abstract class AbsBaseActivity : Activity() {
+open abstract class AbsBaseActivity : AppCompatActivity() {
     //控制状态栏颜色
     protected var isNeedColorStatusBar: Boolean = true
     private var mLoadingView: LoadingDialog? = null

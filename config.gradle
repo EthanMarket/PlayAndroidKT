@@ -15,7 +15,8 @@ ext {
     supportLibs = [
             'com.android.support.constraint:constraint-layout:1.1.3',
             'com.android.support:recyclerview-v7:28.0.0',
-            'com.android.support:appcompat-v7:28.0.0'
+            'com.android.support:appcompat-v7:28.0.0',
+            "com.android.support:design:28.0.0"
     ]
 
     //三方公共UI库
