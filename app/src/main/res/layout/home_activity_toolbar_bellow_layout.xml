@@ -1,0 +1,41 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/toolbar_height"
+    android:background="@color/blue_04aaef">
+
+    <ImageView
+        android:id="@+id/home_activity_toolbar_commodity_manage_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:src="@mipmap/home_activity_commodity_manage_toolbar_icon" />
+
+    <ImageView
+        android:id="@+id/home_activity_toolbar_agent_manage_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/home_activity_toolbar_commodity_manage_img"
+        android:src="@mipmap/home_activity_agent_manage_toolbar_icon" />
+
+    <ImageView
+        android:id="@+id/home_activity_toolbar_income_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="20dp"
+        android:layout_toRightOf="@+id/home_activity_toolbar_agent_manage_img"
+        android:src="@mipmap/home_activity_income_toolbar_icon" />
+
+    <ImageView
+        android:id="@+id/home_activity_toolbar_bellow_mine_img"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_centerVertical="true"
+        android:layout_marginRight="20dp"
+        android:src="@mipmap/home_activity_mine_icon" />
+</RelativeLayout>

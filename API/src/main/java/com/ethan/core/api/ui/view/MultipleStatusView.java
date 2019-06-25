@@ -144,6 +144,12 @@ public class MultipleStatusView extends RelativeLayout {
         showViewByStatus(mViewStatus);
     }
 
+    public void addContentView(int contentViewId){
+        if (contentViewId>0&&mContentViewResId==-1){
+            mContentView = mInflater.inflate(mContentViewResId, null);
+            addView(mContentView, 0, mLayoutParams);
+        }
+    }
     /**
      * 显示内容视图
      */

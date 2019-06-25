@@ -21,7 +21,7 @@ open abstract class AbsBaseActivity : AppCompatActivity() {
         setContentView(setContentViewId())
         if (isNeedColorStatusBar) {
             Sofia.with(this).statusBarLightFont().statusBarBackgroundAlpha(200)
-                .statusBarBackground(getResources().getColor(R.color.colorPrimary));
+                .statusBarBackground(getResources().getColor(R.color.blue_04aaef));
         }
         initDecorView()
         processLogic()

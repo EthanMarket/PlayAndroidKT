@@ -23,7 +23,8 @@ ext {
     commonUI = [
 
             /*沉浸式状态栏*/
-            'com.yanzhenjie:sofia:1.0.5'
+            'com.yanzhenjie:sofia:1.0.5',
+            'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.46'
     ]
     rxJava = [
             'io.reactivex.rxjava2:rxjava:2.2.2',

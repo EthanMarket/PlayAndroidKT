@@ -1,3 +1,10 @@
 <resources>
-    <string name="app_name">PlayAndroidKT</string>
+	<string name="app_name">PlayAndroidKT</string>
+	<string-array name="home_activity_fragment_title">
+		<item>文章</item>
+		<item>体系</item>
+		<item>项目</item>
+		<item>导航</item>
+		<item>网站</item>
+	</string-array>
 </resources>

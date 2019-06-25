@@ -1,0 +1,54 @@
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:layout_width="match_parent"
+	android:layout_height="@dimen/toolbar_height"
+	android:background="@color/blue_04aaef"
+	android:orientation="horizontal">
+
+	<LinearLayout
+		android:layout_toLeftOf="@+id/home_activity_toolbar_mine_upper_img"
+		android:layout_width="match_parent"
+		android:layout_marginRight="34dp"
+		android:orientation="horizontal"
+		android:layout_marginLeft="34dp"
+		android:background="@drawable/search_bg_shape"
+		android:layout_centerVertical="true"
+		android:paddingLeft="@dimen/dp_10"
+		android:paddingTop="@dimen/dp_3"
+		android:paddingBottom="@dimen/dp_3"
+		android:paddingRight="@dimen/dp_16"
+		android:layout_height="wrap_content">
+
+		<ImageView
+			android:background="@drawable/search_input_icon"
+			android:layout_width="wrap_content"
+			android:layout_gravity="center"
+			android:layout_height="wrap_content"/>
+
+		<EditText
+			android:id="@+id/home_activity_toolbar_upper_shop_name"
+			android:layout_width="wrap_content"
+			android:layout_height="wrap_content"
+			android:focusable="false"
+			android:ellipsize="end"
+			android:layout_gravity="center"
+			android:layout_marginLeft="@dimen/dp_10"
+			android:maxEms="9"
+			android:background="@null"
+			android:singleLine="true"
+			android:hint="搜索文章/标签/用户"
+			android:textColor="#fff"
+			android:textSize="13sp"/>
+	</LinearLayout>
+
+
+	<ImageView
+		android:id="@+id/home_activity_toolbar_mine_upper_img"
+		android:layout_width="wrap_content"
+		android:layout_height="wrap_content"
+		android:layout_alignParentRight="true"
+		android:layout_centerVertical="true"
+		android:layout_marginRight="20dp"
+		android:src="@mipmap/home_activity_mine_icon"/>
+
+</RelativeLayout>

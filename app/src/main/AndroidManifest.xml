@@ -9,7 +9,7 @@
 		android:label="@string/app_name"
 		android:name="com.ethan.core.api.base.PlayApplication"
 		android:supportsRtl="true"
-		android:theme="@style/AppTheme">
+		android:theme="@style/NoActionBar">
 		<activity android:name=".HomeActivity">
 			<intent-filter>
 				<action android:name="android.intent.action.MAIN"/>
