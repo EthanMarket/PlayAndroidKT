@@ -1,11 +1,12 @@
-package com.ethan.playandroidkt.home
+package com.ethan.playandroidkt.category
 
 import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.ethan.core.api.base.AbsBaseFragment
+import com.ethan.core.api.entity.Children
 
-class TabFragmentPageAdapter(fm: FragmentManager, mFragmentList: List<AbsBaseFragment>, mTitleList: List<String>) :
+class TabCategoryPageAdapter(fm: FragmentManager, mFragmentList: List<AbsBaseFragment>, mTitleList: List<Children>) :
     FragmentPagerAdapter(fm) {
     private val mFragmentList = mFragmentList
     private val mTitleList = mTitleList
@@ -18,7 +19,7 @@ class TabFragmentPageAdapter(fm: FragmentManager, mFragmentList: List<AbsBaseFra
     }
 
     override fun getPageTitle(position: Int): CharSequence? {
-        return mTitleList.get(position)
+        return mTitleList.get(position).name
     }
 
 }

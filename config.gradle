@@ -36,6 +36,7 @@ ext {
             'com.squareup.retrofit2:retrofit:2.3.0',
             'com.squareup.retrofit2:converter-gson:2.5.0',
             'com.squareup.retrofit2:adapter-rxjava2:2.3.0',
-            'com.google.code.gson:gson:2.2.4'
+            'com.google.code.gson:gson:2.2.4',
+            'com.just.agentweb:agentweb:4.0.3-beta' // (必选)
     ]
 }

@@ -17,10 +17,10 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
-            buildConfigField "Boolean","IS_BETA","${rootProject.ext.android.isBeta}"
+            buildConfigField "Boolean", "IS_BETA", "${rootProject.ext.android.isBeta}"
         }
         debug {
-            buildConfigField "Boolean","IS_BETA","${rootProject.ext.android.isBeta}"
+            buildConfigField "Boolean", "IS_BETA", "${rootProject.ext.android.isBeta}"
         }
     }
     //改下APK的名字
@@ -37,4 +37,5 @@ android {
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(path: ':API')
+    implementation 'com.android.support.constraint:constraint-layout:1.1.3'
 }

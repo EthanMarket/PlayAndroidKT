@@ -5,6 +5,8 @@
 	<color name="colorAccent">#D81B60</color>
 	<color name="blue_04aaef">#04aaef</color>
 	<color name="blue_1b72ef">#1b72ef</color>
+	<color name="color_333333">#333333</color>
+	<color name="color_262626">#262626</color>
 	<color name="gray_434343">#434343</color>
 	<color name="gray_626262">#626262</color>
 	<color name="gray_dcdcdc">#dcdcdc</color>
@@ -14,4 +16,7 @@
 	<color name="red_f44336">#f44336</color>
 	<color name="gray_19191B">#19191B</color>
 	<color name="gray_e0dcdd">#e0dcdd</color>
+	<color name="white_half">#4dffffff</color>
+	<color name="gray_d0d0d0">#d0d0d0</color>
+	<color name="gray_e3e3e3">#e3e3e3</color>
 </resources>

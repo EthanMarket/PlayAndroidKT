@@ -1,25 +1,26 @@
 package com.ethan.playandroidkt.home.article
 
+import android.content.Intent
 import android.os.Bundle
-import android.widget.AdapterView
-import com.chad.library.adapter.base.BaseQuickAdapter
-import com.chad.library.adapter.base.BaseViewHolder
+import com.ethan.core.api.base.CommonContract
 import com.ethan.core.api.entity.ArticleListEntry
 import com.ethan.core.api.entity.DataX
 import com.ethan.playandroidkt.R
 import com.ethan.playandroidkt.home.HomeAbsFragment
+import com.ethan.playandroidkt.web.WebActivity
 
-class ArticleFragment : HomeAbsFragment(), ArticleContract.IArticleView {
+class ArticleFragment : HomeAbsFragment(), CommonContract.IView<ArticleListEntry> {
 
     private val mPresenter: ArticlePresenter  by lazy { ArticlePresenter() }
     private val mArticleList = mutableListOf<DataX>()
     private lateinit var mArticleAdapter: ArticleAdapter
 
     override fun showError(errorMsg: String) {
+        mSwipeRefreshLayout.isRefreshing = false
         mMultipleStatusView.showError()
     }
 
-    override fun articleListEntrySuccess(isRefresh: Boolean, entry: ArticleListEntry) {
+    override fun responseEntrySuccess(isRefresh: Boolean, entry: ArticleListEntry) {
         if (isRefresh) {
             mArticleList.clear()
             mSwipeRefreshLayout.isRefreshing = false
@@ -28,11 +29,11 @@ class ArticleFragment : HomeAbsFragment(), ArticleContract.IArticleView {
                 mArticleAdapter.loadMoreEnd()
             }
         }
-        mArticleList.run {
+        mArticleList.apply {
             addAll(entry.datas)
             if (size == 0) mMultipleStatusView.showEmpty() else mMultipleStatusView.showContent()
         }
-        mArticleAdapter.run {
+        mArticleAdapter.apply {
             loadMoreComplete()
             setEnableLoadMore(true)
             notifyDataSetChanged()
@@ -44,23 +45,24 @@ class ArticleFragment : HomeAbsFragment(), ArticleContract.IArticleView {
         mRecyclerView.adapter = mArticleAdapter
         mArticleAdapter.apply {
             setOnItemClickListener { _, _, position ->
-                showToast("position" + mArticleList.get(position))
+                startActivity(Intent(activity, WebActivity::class.java).apply {
+                    putExtra("link", mArticleList.get(position).link)
+                })
             }
             setOnLoadMoreListener({
-                mPresenter.requestArticleList(false, mArticleList.size / 20)
+                mPresenter.requestEntryData(false, mapOf("page" to mArticleList.size / 20))
             }, mRecyclerView)
         }
         mSwipeRefreshLayout.setOnRefreshListener {
-            mPresenter.requestArticleList(true)
+            mPresenter.requestEntryData(true, mapOf("page" to 0))
             mArticleAdapter.setEnableLoadMore(false)
         }
     }
 
     override fun requestDataStart() {
-        mPresenter.run {
+        mPresenter.apply {
             attachView(this@ArticleFragment)
-            requestArticleList(true)
+            mPresenter.requestEntryData(true, mapOf("page" to 0))
         }
     }
-
 }

@@ -1,43 +1,36 @@
-package com.ethan.playandroidkt
+package com.ethan.playandroidkt.home
 
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.view.ViewCompat
 import android.view.View
 import com.ethan.core.api.base.AbsBaseActivity
-import com.ethan.core.api.entity.ArticleListEntry
 import com.ethan.core.api.rxjava.rxbus.RxBus
-import com.ethan.playandroid.home.HomeContract
-import com.ethan.playandroid.home.HomePresenter
-import com.ethan.playandroidkt.home.HomeAbsFragment
-import com.ethan.playandroidkt.home.TabFragmentPageAdapter
+import com.ethan.playandroidkt.R
 import com.ethan.playandroidkt.home.article.ArticleFragment
+import com.ethan.playandroidkt.home.engineering.EngineeringFragment
+import com.ethan.playandroidkt.home.navi.NaviFragment
 import com.ethan.playandroidkt.home.tree.TreeFragment
 import kotlinx.android.synthetic.main.activity_home.*
 
 
-class HomeActivity : AbsBaseActivity(), HomeContract.IHomeView, AppBarLayout.OnOffsetChangedListener {
+class HomeActivity : AbsBaseActivity(), AppBarLayout.OnOffsetChangedListener {
+    override fun initDecorView() {
+    }
 
     private val mFragmentList = mutableListOf<HomeAbsFragment>()
-    override fun articleListEntrySuccess(entry: ArticleListEntry) {
-        dismissLoadingView()
-    }
 
-    override fun showError(errorMsg: String) {
-    }
-
-    private val mPresenter: HomePresenter by lazy { HomePresenter() }
 
     override fun setContentViewId(): Int = R.layout.activity_home
     override fun processLogic() {
         super.processLogic()
         mAppBarLayout.addOnOffsetChangedListener(this)
-        mHomeViewPager.adapter = TabFragmentPageAdapter(
+        mHomeViewPager.adapter = TabHomePageAdapter(
             supportFragmentManager,
             getFragmentList(),
-            getResources().getStringArray(R.array.home_activity_fragment_title).asList()
+            resources.getStringArray(R.array.home_activity_fragment_title).asList()
         )
-        mHomeViewPager.setOffscreenPageLimit(5);
+        mHomeViewPager.offscreenPageLimit = 5;
         mHomeTabLayout.setupWithViewPager(mHomeViewPager);
     }
 
@@ -46,7 +39,7 @@ class HomeActivity : AbsBaseActivity(), HomeContract.IHomeView, AppBarLayout.OnO
         RxBus.getDefault().subscribe(this, object : RxBus.Callback<String>() {
             override fun onEvent(s: String) {
                 for (homeAbsFragment in mFragmentList) {
-                    homeAbsFragment?.getRecyclerView()?.setOnTouchListener { view, motionEvent ->
+                    homeAbsFragment?.getRecyclerView()?.setOnTouchListener { _, _ ->
                         disDrag()
                         false
                     }
@@ -92,7 +85,7 @@ class HomeActivity : AbsBaseActivity(), HomeContract.IHomeView, AppBarLayout.OnO
         }
     }
 
-    fun constrain(amount: Float, low: Float, high: Float): Float {
+    private fun constrain(amount: Float, low: Float, high: Float): Float {
         var ret = if (amount < low) low else amount
         ret = if (ret > high) high else ret
         return ret
@@ -101,14 +94,11 @@ class HomeActivity : AbsBaseActivity(), HomeContract.IHomeView, AppBarLayout.OnO
     private fun getFragmentList() = mFragmentList.apply {
         add(ArticleFragment())
         add(TreeFragment())
-        add(ArticleFragment())
-        add(ArticleFragment())
+        add(EngineeringFragment())
+        add(NaviFragment())
         add(ArticleFragment())
     }
 
-    override fun initDecorView() {
-        mPresenter.attachView(this)
-    }
 }
 
 
