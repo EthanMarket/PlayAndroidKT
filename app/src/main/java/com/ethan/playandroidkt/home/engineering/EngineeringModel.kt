@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 
 class EngineeringModel : AbsBaseModel() {
     fun requestEngineeringList(): Observable<BaseResponse<List<EngineeringBean>>> {
-        return getHomeService().selectEngineeringList().subscribeOn(Schedulers.io())
+        return getApiService().selectEngineeringList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

@@ -15,6 +15,7 @@
 		style="@style/TabLayoutStyle"
 		android:layout_width="match_parent"
 		android:layout_height="wrap_content"
+		app:tabMode="scrollable"
 		android:background="#fff"></android.support.design.widget.TabLayout>
 
 	<android.support.v4.view.ViewPager

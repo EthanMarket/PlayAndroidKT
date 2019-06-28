@@ -65,8 +65,8 @@ abstract class AbsBaseFragment : Fragment() {
 
     abstract fun requestDataStart()//懒加载数据
 
-    protected fun getViewById(id: Int): View? {
-        return rootView?.findViewById<View>(id)
+    protected  fun <TV : View> getViewById(id: Int): TV {
+        return rootView!!.findViewById(id)
     }
 
     protected fun showToast(msg: String): Unit {

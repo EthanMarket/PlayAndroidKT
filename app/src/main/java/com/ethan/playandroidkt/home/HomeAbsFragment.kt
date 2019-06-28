@@ -10,12 +10,9 @@ import com.ethan.playandroidkt.R
 
 
 abstract class HomeAbsFragment : BaseNetFragment() {
-    protected lateinit var mRecyclerView: RecyclerView
-    protected lateinit var mSwipeRefreshLayout: SwipeRefreshLayout
+
     override fun initView(rootView: ViewGroup?) {
         super.initView(rootView)
-        mRecyclerView = getViewById(R.id.base_recyclerView) as RecyclerView
-        mSwipeRefreshLayout = getViewById(R.id.content_swipeRefreshLayout) as SwipeRefreshLayout
         mRecyclerView.layoutManager = LinearLayoutManager(getActivity());
         RxBus.getDefault().post("mRecyclerView")
     }

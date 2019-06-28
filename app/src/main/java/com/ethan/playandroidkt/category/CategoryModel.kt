@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 
 class CategoryModel : AbsBaseModel() {
     fun requestCategoryBean(page: Int = 0, cid: String): Observable<BaseResponse<CategoryBean>> {
-        return getHomeService().selectCategoryBean(page, cid).subscribeOn(Schedulers.io())
+        return getApiService().selectCategoryBean(page, cid).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

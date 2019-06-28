@@ -35,7 +35,6 @@ class TreeFragment : HomeAbsFragment(), CommonContract.IView<List<TreeBean>> {
     override fun initWidget(savedInstanceState: Bundle?) {
         mAdapter = TreeAdapter(R.layout.item_tree_fragment, mTreeBeanList).apply {
             setOnItemClickListener { _, _, position ->
-                showToast(mTreeBeanList[position].toString())
                 startActivity(Intent(activity, CategoryActivity::class.java).apply {
                     putExtra("TreeBean",mTreeBeanList[position])
                 })

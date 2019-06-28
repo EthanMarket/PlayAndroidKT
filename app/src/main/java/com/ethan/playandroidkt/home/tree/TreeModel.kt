@@ -9,6 +9,6 @@ import io.reactivex.schedulers.Schedulers
 
 class TreeModel : AbsBaseModel() {
     fun requestTreeList(): Observable<BaseResponse<List<TreeBean>>> =
-        getHomeService().selectTreeList().subscribeOn(Schedulers.io())
+        getApiService().selectTreeList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
 }

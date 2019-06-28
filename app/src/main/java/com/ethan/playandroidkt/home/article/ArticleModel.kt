@@ -10,7 +10,7 @@ import io.reactivex.schedulers.Schedulers
 class ArticleModel : AbsBaseModel() {
 
     fun requestArticleList(page: Int = 0): Observable<BaseResponse<ArticleListEntry>> {
-        return getHomeService().selectArticleList(page).subscribeOn(Schedulers.io())
+        return getApiService().selectArticleList(page).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

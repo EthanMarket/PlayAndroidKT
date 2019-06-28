@@ -46,7 +46,8 @@ class ArticleFragment : HomeAbsFragment(), CommonContract.IView<ArticleListEntry
         mArticleAdapter.apply {
             setOnItemClickListener { _, _, position ->
                 startActivity(Intent(activity, WebActivity::class.java).apply {
-                    putExtra("link", mArticleList.get(position).link)
+                    putExtra("link", mArticleList[position].link)
+                    putExtra("title", mArticleList[position].title)
                 })
             }
             setOnLoadMoreListener({
@@ -62,7 +63,7 @@ class ArticleFragment : HomeAbsFragment(), CommonContract.IView<ArticleListEntry
     override fun requestDataStart() {
         mPresenter.apply {
             attachView(this@ArticleFragment)
-            mPresenter.requestEntryData(true, mapOf("page" to 0))
+            requestEntryData(true, mapOf("page" to 0))
         }
     }
 }

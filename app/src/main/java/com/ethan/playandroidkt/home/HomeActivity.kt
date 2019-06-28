@@ -96,7 +96,6 @@ class HomeActivity : AbsBaseActivity(), AppBarLayout.OnOffsetChangedListener {
         add(TreeFragment())
         add(EngineeringFragment())
         add(NaviFragment())
-        add(ArticleFragment())
     }
 
 }

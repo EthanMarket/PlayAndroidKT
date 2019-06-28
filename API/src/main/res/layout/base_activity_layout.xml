@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	xmlns:app="http://schemas.android.com/apk/res-auto"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:layout_height="match_parent">
+
+	<include layout="@layout/default_toolbar"></include>
+
+	<com.ethan.core.api.ui.view.MultipleStatusView
+		android:id="@+id/mMultipleStatusView"
+		app:emptyView="@layout/msv_empty_view"
+		app:errorView="@layout/msv_error_view"
+		app:loadingView="@layout/msv_loading_view"
+		app:noNetworkView="@layout/msv_no_network_view"
+		app:contentView="@layout/recyclerview_layout"
+		android:background="@color/gray_f7f7f7"
+		android:layout_width="match_parent"
+		android:layout_height="match_parent">
+	</com.ethan.core.api.ui.view.MultipleStatusView>
+
+</LinearLayout>

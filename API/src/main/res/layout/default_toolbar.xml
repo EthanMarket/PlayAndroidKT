@@ -28,6 +28,9 @@
 			android:layout_centerInParent="true"
 			android:gravity="right"
 			android:padding="15dp"
+			android:maxEms="16"
+			android:ellipsize="end"
+			android:singleLine="true"
 			android:text=""
 			android:textColor="#ffffff"
 			android:textSize="16sp"/>

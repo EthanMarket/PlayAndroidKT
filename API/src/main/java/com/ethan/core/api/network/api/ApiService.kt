@@ -3,9 +3,7 @@ package com.ethan.core.api.network.api
 import com.ethan.core.api.entity.*
 import com.ethan.core.api.network.BaseResponse
 import io.reactivex.Observable
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 /**
  * 使用wanAndroid 提供API
@@ -40,7 +38,7 @@ interface ApiService {
      */
 
     @GET("/article/list/{page}/json")
-    fun selectCategoryBean(@Path("page") page: Int,@Query("cid") cid:String): Observable<BaseResponse<CategoryBean>>
+    fun selectCategoryBean(@Path("page") page: Int, @Query("cid") cid: String): Observable<BaseResponse<CategoryBean>>
 
 
     /**
@@ -54,6 +52,19 @@ interface ApiService {
     fun selectEngineeringList(): Observable<BaseResponse<List<EngineeringBean>>>
 
     /**
+     * 4.2 项目列表数据
+    某一个分类下项目列表数据，分页展示
+    https://www.wanandroid.com/project/list/1/json?cid=294
+    方法：GET
+    参数：
+    cid 分类的id，上面项目分类接口
+    页码：拼接在链接中，从1开始。
+     */
+
+    @GET("/project/list/{page}/json")
+    fun selectProjectBean(@Path("page") page: Int = 1, @Query("cid") cid: String): Observable<BaseResponse<ProjectBean>>
+
+    /**
     3. 导航
     3.1 导航数据
     https://www.wanandroid.com/navi/json
@@ -62,5 +73,19 @@ interface ApiService {
      */
     @GET("/navi/json")
     fun selectNaviList(): Observable<BaseResponse<List<NaviBean>>>
+
+
+    /**
+     * 7. 搜索
+    7.1 搜索
+    https://www.wanandroid.com/article/query/0/json
+    方法：POST
+    参数：
+    页码：拼接在链接上，从0开始。
+    k ： 搜索关键词
+     */
+    @FormUrlEncoded
+    @POST("/article/query/{page}/json")
+    fun selectSearchBean(@Path("page") page: Int = 0, @Field("k") keyWord: String): Observable<BaseResponse<ProjectBean>>
 
 }

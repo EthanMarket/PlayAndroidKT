@@ -9,7 +9,7 @@ import io.reactivex.schedulers.Schedulers
 
 class NaviModel : AbsBaseModel() {
     fun requestNaviList(): Observable<BaseResponse<List<NaviBean>>> {
-        return getHomeService().selectNaviList().subscribeOn(Schedulers.io())
+        return getApiService().selectNaviList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
 }

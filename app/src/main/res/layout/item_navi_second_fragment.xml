@@ -17,7 +17,7 @@
 		android:layout_height="wrap_content"/>
 
 	<TextView
-		android:background="@color/gray_dcdcdc"
+		android:background="@color/gray_e0e0e0"
 		android:layout_width="match_parent"
 		android:layout_height="1dp"/>
 
