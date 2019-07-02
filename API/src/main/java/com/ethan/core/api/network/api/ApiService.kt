@@ -88,4 +88,22 @@ interface ApiService {
     @POST("/article/query/{page}/json")
     fun selectSearchBean(@Path("page") page: Int = 0, @Field("k") keyWord: String): Observable<BaseResponse<ProjectBean>>
 
+
+    /**
+     * 1.4 搜索热词
+        即目前搜索最多的关键词。
+        https://www.wanandroid.com//hotkey/json
+        方法：GET
+        参数：无
+     */
+    @GET("/navi/json")
+    fun selectHotkeyList(): Observable<BaseResponse<List<HotkeyBean>>>
+
+
+
+
+
+
+
+
 }

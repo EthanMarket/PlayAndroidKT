@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+	xmlns:android="http://schemas.android.com/apk/res/android"
+	android:orientation="vertical"
+	android:layout_width="match_parent"
+	android:paddingBottom="@dimen/dp_3"
+	android:paddingTop="@dimen/dp_3"
+	android:paddingRight="@dimen/dp_10"
+	android:paddingLeft="@dimen/dp_10"
+	android:background="@color/white_half"
+	android:layout_height="wrap_content">
+
+	<TextView
+		android:id="@+id/item_search_history_tv"
+		android:textSize="@dimen/sp_16"
+		android:textColor="@color/gray_19191B"
+		android:layout_width="wrap_content"
+		android:text="这是一个搜索历史"
+		android:layout_height="wrap_content"/>
+
+	<TextView
+		android:id="@+id/item_search_history_time_tv"
+		android:textSize="@dimen/sp_12"
+		android:layout_width="wrap_content"
+		android:text="2018-11-15"
+		android:layout_alignParentRight="true"
+		android:layout_height="wrap_content"/>
+
+</RelativeLayout>

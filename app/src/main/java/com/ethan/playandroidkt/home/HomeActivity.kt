@@ -1,9 +1,11 @@
 package com.ethan.playandroidkt.home
 
+import android.content.Intent
 import android.support.design.widget.AppBarLayout
 import android.support.design.widget.CoordinatorLayout
 import android.support.v4.view.ViewCompat
 import android.view.View
+import android.widget.LinearLayout
 import com.ethan.core.api.base.AbsBaseActivity
 import com.ethan.core.api.rxjava.rxbus.RxBus
 import com.ethan.playandroidkt.R
@@ -11,11 +13,17 @@ import com.ethan.playandroidkt.home.article.ArticleFragment
 import com.ethan.playandroidkt.home.engineering.EngineeringFragment
 import com.ethan.playandroidkt.home.navi.NaviFragment
 import com.ethan.playandroidkt.home.tree.TreeFragment
+import com.ethan.playandroidkt.search.SearchActivity
 import kotlinx.android.synthetic.main.activity_home.*
 
 
 class HomeActivity : AbsBaseActivity(), AppBarLayout.OnOffsetChangedListener {
+    private lateinit var mSearchLayout: LinearLayout
     override fun initDecorView() {
+        mSearchLayout = findViewById(R.id.home_activity_search_mine_upper_layut)
+        mSearchLayout.setOnClickListener {
+            startActivity(Intent(this, SearchActivity::class.java))
+        }
     }
 
     private val mFragmentList = mutableListOf<HomeAbsFragment>()

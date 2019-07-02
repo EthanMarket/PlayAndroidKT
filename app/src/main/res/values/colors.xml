@@ -16,7 +16,10 @@
 	<color name="red_f44336">#f44336</color>
 	<color name="gray_19191B">#19191B</color>
 	<color name="gray_e0dcdd">#e0dcdd</color>
+	<color name="gray_10dcdd">#e0dcdd</color>
 	<color name="white_half">#4dffffff</color>
 	<color name="gray_d0d0d0">#d0d0d0</color>
 	<color name="gray_e3e3e3">#e3e3e3</color>
+	<color name="alpha_half">#5b000000</color>
+	<color name="gray_e4e4e4">#e4e4e4</color>
 </resources>

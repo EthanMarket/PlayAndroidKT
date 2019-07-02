@@ -12,4 +12,9 @@ class ProjectModel : AbsBaseModel() {
         return getApiService().selectProjectBean(page, cid).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
     }
+
+    fun requestSearchBean(page: Int, keyword: String): Observable<BaseResponse<ProjectBean>> {
+        return getApiService().selectSearchBean(page, keyword).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+    }
 }

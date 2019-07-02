@@ -16,12 +16,13 @@ class ProjectActivity : BaseNetActivity(), CommonContract.IView<ProjectBean> {
     private val mAdapter by lazy {
         ProjectAdapter(R.layout.item_project_activity, mDataList);
     }
-    private lateinit var mCid: String
-
+    private var mCid: String? = null
+    private var mKeyWord: String? = null
     override fun initContentView() {
 
         findViewById<TextView>(R.id.mToolBarTv).text = intent.getStringExtra("name")
         mCid = intent.getStringExtra("cid")
+        mKeyWord = intent.getStringExtra("keyword")
         mRecyclerView.apply {
             layoutManager = LinearLayoutManager(this@ProjectActivity)
             adapter = mAdapter
@@ -50,10 +51,15 @@ class ProjectActivity : BaseNetActivity(), CommonContract.IView<ProjectBean> {
 
 
     fun requestEntryData(isRefresh: Boolean, page: Int) {
-        mPresenter.requestEntryData(isRefresh, mapOf("page" to page, "cid" to mCid))
+        if (mCid != null) {
+            mPresenter.requestEntryData(isRefresh, mapOf("page" to page, "cid" to mCid!!))
+        } else {
+            mPresenter.requestEntryData(isRefresh, mapOf("page" to page, "keyword" to mKeyWord!!))
+        }
     }
 
     override fun responseEntrySuccess(isRefresh: Boolean, entry: ProjectBean) {
+        println("====entry======>" + entry.toString())
         mSwipeRefreshLayout.isRefreshing = false
         mMultipleStatusView.showContent()
         mDataList.apply {
@@ -61,6 +67,9 @@ class ProjectActivity : BaseNetActivity(), CommonContract.IView<ProjectBean> {
                 clear()
             }
             addAll(entry.datas)
+            if (size == 0) {
+                mMultipleStatusView.showEmpty()
+            }
         }
         mAdapter.apply {
             loadMoreComplete()
@@ -73,6 +82,7 @@ class ProjectActivity : BaseNetActivity(), CommonContract.IView<ProjectBean> {
     }
 
     override fun showError(errorMsg: String) {
+        dismissLoadingView()
         mSwipeRefreshLayout.isRefreshing = false
         mMultipleStatusView.showError()
     }
